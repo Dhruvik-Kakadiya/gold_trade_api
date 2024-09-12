@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -68,6 +69,9 @@ CORS_ALLOWED_ORIGINS = [
 REDIS_HOST = 'localhost'
 REDIS_PORT = 6379
 REDIS_DB = 0
+
+METAL_GOLD_PRICE_URL = config("METAL_GOLD_PRICE_URL")
+METAL_GOLD_PRICE_API_API_KEY = config("METAL_GOLD_PRICE_API_API_KEY")
 
 ROOT_URLCONF = 'gold_trade_api.urls'
 
