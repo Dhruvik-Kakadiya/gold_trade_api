@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+from datetime import timedelta
 from pathlib import Path
 from decouple import config
 
@@ -72,6 +72,13 @@ REDIS_DB = 0
 
 METAL_GOLD_PRICE_URL = config("METAL_GOLD_PRICE_URL")
 METAL_GOLD_PRICE_API_API_KEY = config("METAL_GOLD_PRICE_API_API_KEY")
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),  # Access token valid for 1 day
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),  # Refresh token valid for 7 days
+    'ROTATE_REFRESH_TOKENS': True,  # Optionally, rotate refresh tokens with each use
+    'BLACKLIST_AFTER_ROTATION': True,  # Blacklist old refresh tokens after rotation
+}
 
 ROOT_URLCONF = 'gold_trade_api.urls'
 
